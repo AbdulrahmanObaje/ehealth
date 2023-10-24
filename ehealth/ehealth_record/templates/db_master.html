@@ -1,0 +1,23 @@
+{% extends 'base.html' %} 
+{% block content %}
+<div class="row">
+    <div class="col-s-3 db-nav">
+        <div class="sidenav">
+            <a href="{% url 'dashboard' %}"><i class="fa fa-home"></i>  Home</a>
+            <a href="{% url 'post_record' %}"><i class="fa fa-plus"></i>  Add Record</a>
+            <a href="{% url 'post_appointment' %}"><i class="fa fa-clock"></i>  New Appointment</a>
+            <a href="{% url 'view_statistics' %}"><i class="fa fa-cog"></i>  Statistics</a>
+            {%  if user.role == "Health Worker" %}
+                {% comment %} <a href="{% url 'view_record' %}"><i class="fa fa-eye"></i>  View Record</a> {% endcomment %}
+                <a href="{% url 'view_patient' %}"><i class="fa fa-eye"></i>  View Patient</a>
+                <a href="{% url 'my_appointments' %}"><i class="fa fa-eye"></i>  My Appointments</a>
+                
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-s-9 db-content">
+        <h5>{% block master-content-header %} {% endblock %}</h5>
+        {% block master-content %} {% endblock %}
+    </div>
+</div>
+{% endblock content %}

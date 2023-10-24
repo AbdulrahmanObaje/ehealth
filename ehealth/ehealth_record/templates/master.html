@@ -1,0 +1,209 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>      ehealth4Everyone | {% block title %}{% endblock %} | Welcome to the hub where
+            knowledge and expertise are shared. Questions, Quiz, test and answer in
+            computer programming languages, such as html, css, javascript, general
+            computer knowledge, python, php, JAVA, c++, CPP, c#, etc.</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="copyright" content="All Rights Reserved | eHealth 2001 - 2020">
+        <meta name="description" content="Welcome to the hub where knowledge and expertise are shared. Questions, Quiz, test and answer in computer programming languages, such as html, css, javascript, general computer knowledge, python, php, JAVA, c++, CPP, c#, etc. .">
+        <meta name="keywords" content="past, question, jamb, neco, ssce, waec, gce, job, jobs, recruitment, recruit, ehealth, name, com, gov, ng, software, artificial, intelligent, robot, abuja, nigeria, news, school, hotel, shopping, cart, dashboard, client, online, advertisement, advert, publisher, advertiser, igala, icda, culture, cultural, development, association, kogi, idah, dekina, ankpa, igalamela, olamaboro, itobe, kelegu, english, dictionary, translation, hub, knowledge, expertise shared, questions, quiz, test, answer, computer, programming, languages, html, css, javascript, general, computer, knowledge, python, php, JAVA, c++, CPP, c#, etc. ">
+        <meta name="author" content="Prince A. A. Obaje" />
+
+        <meta name="facebook-domain-verification" content="q29ely3hxiey3i863e2exa7oydcygq" />
+
+        <!-- css -->
+        <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700|Open+Sans:300,400,600,700" rel="stylesheet">
+        <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" />
+        <link href="{% static 'css/bootstrap-responsive.css' %}" rel="stylesheet" />
+        <link href="{% static 'css/fancybox/jquery.fancybox.css' %}" rel="stylesheet">
+        <link href="{% static 'css/jcarousel.css' %}" rel="stylesheet" />
+        <link href="{% static 'css/flexslider.css' %}" rel="stylesheet" />
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+
+        <!-- Bootstrap CSS -->
+        <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" />
+        {% block head %}{% endblock %}
+    </head>
+            <header>
+                <div class="container ">
+            
+                    <div class="row nomargin">
+                        <div class="span12">
+                            <div class="headnav">
+                                <ul>
+                                    {% if user.is_authenticated %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/logout">Logout</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Welcome, {{user.username}}</a>
+                                    </li>
+                                    {% else %}
+                                    <li class="nav-item">
+                                    <a class="nav-link" href="login">Login</a>
+                                    </li>
+                                    {% endif %}
+                                    
+                                </ul>
+                            </div>
+                            
+                    </div>
+                    <div class="row">
+                        <div class="span4">
+                            <div class="logo">
+                                <a href="{% url 'index' %}"><img src="{% static 'img/ehealth_teal_green_70px.png'%}" alt="" class="logo" /></a>
+                            </div>
+                        </div>
+                        <div class="span8">
+                            
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- start of dashboard header -->
+            {%  if user.is_authenticated %}  
+            <div class="container">           
+                <div class="row">
+                    <div class="span4">
+                        <p>Welcome {{ user.first_name }}. <a href="{% url 'logout' %}"><i class="icon-signout"></i>Log out</a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            <!-- end of dashboard header -->
+            
+            {% if messages %}  
+            <div class="container">
+                <ul>   
+                    {% for message in messages %}  
+                        <li>{{ message }}</li>  
+                    {% endfor %}  
+                </ul> 
+            </div>  
+            {% endif %}  
+            {% block content %} {% endblock %}
+
+            <footer>
+              <div class="container">
+                <div class="row">
+                  <div class="span3">
+                    <div class="widget">
+                      <h5 class="widgetheading">Browse pages</h5>
+                      <ul class="link-list">
+                        <li><a href="#">About eHealth4Everyone</a></li>
+                        <li><a href="#">Our services</a></li>
+                        <li><a href="#">Meet our team</a></li>
+                        <li><a href="#">Explore our portfolio</a></li>
+                        <li><a href="#">Get in touch with us</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="span3">
+                    <div class="widget">
+                      <h5 class="widgetheading">Important stuff</h5>
+                      <ul class="link-list">
+                        <li><a href="#">Journals</a></li>
+                        <li><a href="#">Terms and conditions</a></li>
+                        <li><a href="#">Privacy policy</a></li>
+                        <li><a href="#">Career center</a></li>
+                        <li><a href="#">Forum</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="span3">
+                    <div class="widget">
+                      <h5 class="widgetheading">Tweets From Us</h5>
+                      <div class="flickr_badge">
+                        <script type="text/javascript" src="http://www.tweeter.com/"></script>
+                      </div>
+                      <div class="clear">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="span3">
+                    <div class="widget">
+                      <h5 class="widgetheading">Get in touch with us</h5>
+                      <address>
+                        <strong>eHealth4Everyone</strong><br>
+                        Abuja Office: 8 Kukawa close,<br>
+                        off Gimbiya street, <br>
+                        close to Top Rank Hotel,<br>
+                         Area 11, Garki, Abuja.<br>
+                        Registration Number:<br>
+                        RC1276247.<br>
+                       </address>
+                      <p>
+                        <i class="icon-phone"></i> (+234) 902 1720 570 <br>
+                        <i class="icon-envelope-alt"></i> info@ehealth.com.ng
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="sub-footer">
+                <div class="container">
+                  <div class="row">
+                    <div class="span6">
+                      <div class="copyright">
+                        <p>
+                          <span>&copy; eHealth4Everyone - All right reserved.</span>
+                        </p>
+                        <div class="credits">
+                          <!--
+                            All the links in the footer should remain intact.
+                            You can delete the links only if you purchased the pro version.
+                            Licensing information: https://bootstrapmade.com/license/
+                            Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Flattern
+                          -->
+                          Designed by <a href="https://www.ehealth.com.ng/">Abdulrahman Obaje</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="span6">
+                      <ul class="social-network">
+                        <li><a href="#" data-placement="bottom" title="Facebook"><i class="icon-facebook icon-square"></i></a></li>
+                        <li><a href="#" data-placement="bottom" title="Twitter"><i class="icon-twitter icon-square"></i></a></li>
+                        <li><a href="#" data-placement="bottom" title="Linkedin"><i class="icon-linkedin icon-square"></i></a></li>
+                        <li><a href="#" data-placement="bottom" title="Pinterest"><i class="icon-pinterest icon-square"></i></a></li>
+                        <li><a href="#" data-placement="bottom" title="Google plus"><i class="icon-google-plus icon-square"></i></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </footer>
+          </div>
+          <a href="#" class="scrollup"><i class="icon-chevron-up icon-square icon-32 active"></i></a>
+          <!-- javascript
+            ================================================== -->
+          <!-- Placed at the end of the document so the pages load faster -->
+          <script src="{% static 'js/jquery.js' %}"></script>
+          <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+          <script src="{% static 'js/bootstrap.js' %}"></script>
+          <script src="{% static 'js/jcarousel/jquery.jcarousel.min.js' %}"></script>
+          <script src="{% static 'js/jquery.fancybox.pack.js' %}"></script>
+          <script src="{% static 'js/jquery.fancybox-media.js' %}"></script>
+          <script src="{% static 'js/google-code-prettify/prettify.js' %}"></script>
+          <script src="{% static 'js/portfolio/jquery.quicksand.js' %}"></script>
+          <script src="{% static 'js/portfolio/setting.js' %}"></script>
+          <script src="{% static 'js/jquery.flexslider.js' %}"></script>
+          <script src="{% static 'js/jquery.nivo.slider.js' %}"></script>
+          <script src="{% static 'js/modernizr.custom.js' %}"></script>
+          <script src="{% static 'js/jquery.ba-cond.min.js' %}"></script>
+          <script src="{% static 'js/jquery.slitslider.js' %}"></script>
+          <script src="{% static 'js/animate.js' %}"></script>
+          <script src="{% static 'js/scripts.js' %}"></script>
+        
+          <!-- Template Custom JavaScript File -->
+          <script src="{% static 'js/custom.js' %}"></script>
+          {% comment %} <script src="{% static 'js/signup.js' %}"></script> {% endcomment %}
+          {% comment %} <script src="{% static 'js/passwordreset.js' %}"></script> {% endcomment %}
+        
+        </body>
+        </html>
+        

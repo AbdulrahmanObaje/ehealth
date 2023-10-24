@@ -1,0 +1,1034 @@
+@font-face{
+    font-family: Oswald-SemiBold;
+    src: url(../fonts/Oswald/static/Oswald-SemiBold.ttf);
+}
+@font-face{
+    font-family: Oswald-Regular;
+    src: url(../fonts/Oswald/static/Oswald-Regular.ttf);
+}
+@font-face{
+    font-family: Play-Regular;
+    src: url(../fonts/Play/Play-Regular.ttf);
+}
+@font-face{
+    font-family: Play-Bold;
+    src: url(../fonts/Play/Play-Bold.ttf);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: rgb(111, 20, 4);
+    --secondary-color: rgb(210, 132, 118);
+    --main-bg-color: rgb(242, 121, 99);
+}
+
+body {
+    margin: 20;
+    background-color: #f1f1f1;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.top-strip{
+    margin-top: 12px;
+}
+
+.parent-content{
+    padding: 0 2px;
+}
+
+.hero-image {
+    /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../Img/header-hero.jpg"); */
+    height: 400px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.hero-text {
+    margin: 16px;
+    padding: 44px;
+    color: #04aa6d;
+}
+
+.hero-text div {
+    margin-top: 10px;
+    padding: 6px 0px;
+}
+
+.hero-text h1 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 86px;
+    margin: 0;
+}
+
+.hero-text h4 {
+    color: #84c186;
+    font-size: 42px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.hero-text a {
+    top: 12px;
+    padding: 12px;
+    border: 1px solid #4caf50;
+    border-radius: 5px;
+}
+
+.hero-text a:hover {
+    animation-name: buttonanim;
+    animation-duration: 1s;
+}
+
+@keyframes buttonanim {
+    from {
+        background-color: #ffffff;
+    }
+    to {
+        background-color: #4caf50;
+        color: #ffffff;
+    }
+}
+
+.featured-img img {
+    top: 12px;
+    padding: 32px 12px;
+    width: 80%
+}
+
+.justify-content-center {
+    max-width: 40%;
+    margin: auto;
+}
+
+#logo img{
+    width: 70px;
+    padding: 6px;
+}
+
+#logo {
+    margin: auto;
+    float: left;
+}
+
+.topnav-right {
+    float: right;
+    background-color: var(--primary-color);
+}
+
+.header {
+    background-color: var(--main-bg-color);
+    border-bottom: 3px solid var(--primary-color);
+    font-size: 16px;
+    font-family: Oswald-SemiBold, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.header .topnav {
+    overflow: hidden;
+    background-color: var(--primary-color);
+    padding: 12px;
+}
+
+.topnav>a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.active {
+    background-color: #4caf50;
+    color: white;
+}
+
+.header {
+    background-color: var(--secondary-color);
+    margin: 0;
+}
+
+.header .topnav .icon {
+    display: none;
+}
+
+.header .dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.header .dropdown .dropbtn {
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.header .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    z-index: 10;
+}
+
+.header .dropdown .dropdown-content a {
+    float: none;
+    color: var(--primary-color);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.header .topnav a:hover,
+.header .dropdown:hover .dropbtn {
+    background-color: var(--secondary-color);
+    color: #ffffff;
+}
+
+.header .dropdown-content a:hover {
+    background-color: var(--secondary-color);
+    color: #ffffff;
+}
+
+.header .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.header .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 12px 14px;
+    text-decoration: none;
+}
+
+
+/* Create a right-aligned (split) link inside the navigation bar */
+.header .topnav .split-right {
+    float: right;
+    background-color: #04aa6d;
+    color: white;
+}
+
+.sticky {
+    position: -webkit-sticky;
+    /* Safari */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.website-content{
+    padding: 12px;
+}
+/*Style Dashboard sidennavigation*/
+/* Fixed sidenav, full height */
+.sidenav {
+    height: 100%;
+    width: 200px;
+    margin: 0;
+    z-index: 1;
+    background-color: var(--primary-color);
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+
+  /* Style the sidenav links and the dropdown button */
+  .sidenav a, .dashboard-dropdown-btn {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 16px;
+    color: var(--secondary-color);
+    display: block;
+    border: none;
+    background: none;
+    width:100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+  }
+
+  /* On mouse-over */
+  .sidenav a:hover, .dashboard-dropdown-btn:hover {
+    color: #f1f1f1;
+  }
+
+  /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dashboard-dropdown-container {
+    display: none;
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    padding-left: 8px;
+  }
+
+  .nav-circle{
+    border: 1px #ffffff solid;
+    border-radius: 10px;
+  }
+
+  /* Optional: Style the caret down icon */
+  .fa-caret-down {
+    float: right;
+    padding-right: 8px;
+  }
+  /*End dashboard side navigation*/
+
+@media screen and (max-width: 600px) {
+    .header .topnav a:not(:first-child),
+    .header .dropdown .dropbtn {
+        display: none;
+    }
+    .header .topnav a.icon {
+        float: right;
+        display: block;
+    }
+    .header .topnav-right {
+        float: none;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .header .topnav.responsive {
+        position: relative;
+    }
+    .header .topnav.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .header .topnav.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+    .header .topnav.responsive .dropdown {
+        float: none;
+    }
+    .header .topnav.responsive .dropdown-content {
+        position: relative;
+    }
+    .header .topnav.responsive .dropdown .dropbtn {
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
+}
+
+
+/* Side bar styling starts here */
+
+.sidebar {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 180px;
+    background-color: #f3f3f3;
+    overflow: hidden;
+}
+
+.sidebar a {
+    display: block;
+    color: #000000;
+    padding: 6px;
+    text-decoration: none;
+}
+
+.sidebar a:hover:not(.active) {
+    background-color: var(--secondary-color);
+    color: #f3f3f3;
+}
+
+.sidebar .dropdown .dropbtn {
+    border: none;
+    outline: none;
+    color: 000000;
+    padding: 4px 6px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.sidebar .dropdown-content {
+    display: none;
+    position: relative;
+    min-width: 160px;
+    z-index: 1;
+}
+
+.sidebar .dropdown-content a {
+    float: none;
+    color: #000000;
+    padding: 4px 6px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.sidebar .dropdown-content a:hover {
+    color: #ffffff;
+    background-color: var(--secondary-color);
+}
+
+.sidebar .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+@media screen and (max-width: 700px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    .sidebar a {
+        float: left;
+    }
+    div.content {
+        margin-left: 0;
+    }
+    .sidebar .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .sidebar a {
+        text-align: center;
+        float: none;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .sidebar a {
+        text-align: center;
+        float: none;
+    }
+}
+
+/* Side bar styling ends here */
+.container {
+    padding: 2px 12px;
+}
+
+.footer {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    font-size: 14px;
+    font-weight: 100;
+    margin: 0;
+    padding: 15px;
+    font-family: Play-Regular;
+}
+
+.footer span {
+    font-size: 16px;
+    padding-bottom: 6px;
+}
+
+.contact span {
+    font-size: 18px;
+    padding-bottom: 6px;
+    font-family: Oswald-Regular;
+}
+
+.footer p {
+    padding-bottom: 0;
+    margin: 0;
+}
+
+.footer a {
+    color: var(--primary-color);
+    margin-bottom: 4px;
+}
+
+.footer a:hover {
+    color: var(--main-bg-color)
+}
+
+.footer li {
+    list-style-type: none;
+    margin: 0;
+}
+
+.contact p{
+    padding: 0;
+    margin: 0;
+}
+.powered-by {
+    background-color: var(--primary-color);
+    padding: 6px 24px;
+}
+
+.powered-by p,
+.powered-by a{
+    color: var(--secondary-color);
+    padding: 6px 24px;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+[class*="col-"] {
+    float: left;
+    padding: 4px;
+}
+
+a {
+    text-decoration: none;
+    padding: 6px 10px;
+}
+
+html {
+    font-family: "Lucida Sans", sans-serif;
+}
+
+[class*="col-"] {
+    width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+    /* For tablets: */
+    .col-s-1 {
+        width: 8.33%;
+    }
+    .col-s-2 {
+        width: 16.66%;
+    }
+    .col-s-3 {
+        width: 25%;
+    }
+    .col-s-4 {
+        width: 33.33%;
+    }
+    .col-s-5 {
+        width: 41.66%;
+    }
+    .col-s-6 {
+        width: 50%;
+    }
+    .col-s-7 {
+        width: 58.33%;
+    }
+    .col-s-8 {
+        width: 66.66%;
+    }
+    .col-s-9 {
+        width: 75%;
+    }
+    .col-s-10 {
+        width: 83.33%;
+    }
+    .col-s-11 {
+        width: 91.66%;
+    }
+    .col-s-12 {
+        width: 100%;
+    }
+    .form-control {
+        display: block;
+        margin: 20px auto;
+        width: 40%;
+        padding: 20px 30px;
+        background-color: #ddb175;
+        border-radius: 5px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .col-1 {
+        width: 8.33%;
+    }
+    .col-2 {
+        width: 16.66%;
+    }
+    .col-3 {
+        width: 25%;
+    }
+    .col-4 {
+        width: 33.33%;
+    }
+    .col-5 {
+        width: 41.66%;
+    }
+    .col-6 {
+        width: 50%;
+    }
+    .col-7 {
+        width: 58.33%;
+    }
+    .col-8 {
+        width: 66.66%;
+    }
+    .col-9 {
+        width: 75%;
+    }
+    .col-10 {
+        width: 83.33%;
+    }
+    .col-11 {
+        width: 91.66%;
+    }
+    .col-12 {
+        width: 100%;
+    }
+}
+
+.ehealth-form input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+input[type="file"],
+input[type="text"],
+input[type="url"],
+input[type="search"],
+input[type="number"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+input[type="file"],
+.ehealth-form select,
+textarea {
+    width: 100%;
+    padding: 6px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+input[type="checkbox"] {
+    padding: 6px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+/* Customize check box starts here */
+ /* Customize the label (the container) */
+ .input-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* Hide the browser's default checkbox */
+  .input-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+  }
+
+  /* On mouse-over, add a grey background color */
+  .input-container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+
+  /* When the checkbox is checked, add a blue background */
+  .input-container input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  /* Show the checkmark when checked */
+  .input-container input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  /* Style the checkmark/indicator */
+  .input-container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+/* Customize check box ends here */
+
+
+
+
+.weekdays{
+    padding: 12px;
+}
+
+.programming span{
+    font-weight: bolder;
+}
+
+.post_category{
+    background-color: #ffffff;
+    padding: 12px;
+    width: 250px;
+    height: 150px;
+    border: 1px dotted black;
+    overflow: auto;
+}
+.frm-control-label{
+    font-size: 16px;
+    font-weight: bolder;
+    padding: 12px 0;
+    margin-bottom: 12px;
+}
+
+.meta-area{
+    border-left: 2px solid #b4a910;
+}
+.dropzone {
+    background: var(--secondary-color);
+    border-radius: 5px;
+    max-width: 100%x;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px dotted var(--primary-color);
+}
+
+.fileupload input[type="file"]{
+    display: none;
+}
+
+div .fileupload,
+div .featureIMGToUpload{
+    text-align:center;
+    padding:4px;
+  }
+
+div .fileupload .or{
+    padding: 10px;;
+    font-size: 16px;
+}
+
+label{
+    cursor: pointer;
+}
+
+a {
+    padding: 6px 10px;
+    text-decoration: none;
+}
+
+.form-auth {
+    width: 40%;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+@media only screen and (max-width: 600px) {
+    .form-auth {
+        width: 100%;
+    }
+}
+
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+button {
+    background-color: #ff0000;
+    border: none;
+    color: #ffffff;
+    padding: 6px 10px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+input[type="button"] :hover,
+input[type="submit"] :hover,
+input[type="reset"],
+button :hover {
+    background-color: #ffffff;
+    border: none;
+    color: #ff0000;
+    border: solid 1px #ff0000;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+div.card {
+    width: 450px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+div.card-header {
+    background-color: #618863;
+    color: white;
+    padding: 6px;
+    font-size: 18px;
+}
+
+div.card-container {
+    padding: 12px;
+}
+
+.container-iframe {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding-top: 56.25%;
+    /* 16:9 Aspect Ratio */
+}
+
+.responsive-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+
+/* Multi-step registration */
+.regyellowpage #regForm {
+    background-color: #ffffff;
+    margin: 12px;
+    padding: 12px;
+    width: 70%;
+    min-width: 300px;
+}
+
+
+/* Style the input fields */
+.regyellowpage input {
+    padding: 10px;
+    width: 100%;
+    font-size: 17px;
+    font-family: Raleway;
+    border: 1px solid #aaaaaa;
+}
+
+/* Mark input boxes that gets an error on validation: */
+.regyellowpage input.invalid {
+    background-color: #ffdddd;
+}
+
+
+/* Hide all steps by default: */
+.regyellowpage .tab {
+    display: none;
+}
+
+/* Make circles that indicate the steps of the form: */
+.regyellowpage .step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+/* Mark the active step: */
+.regyellowpage .step.active {
+    opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.regyellowpage .step.finish {
+    background-color: #4caf50;
+}
+
+
+.tooltiptext {
+    visibility: hidden;
+    width: 600px;
+    background-color: #e07777;
+    color: #fff;
+    text-align: left;
+    padding: 5px 0;
+    border-radius: 6px;
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    bottom: 50%;
+    left: 50%;
+    margin-left: -60px;
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.paper .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+
+/* Show the tooltip text when you mouse over the tooltip container */
+
+.paper:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/* The "show" class is added to the filtered elements */
+
+.show {
+    display: block;
+}
+
+.quick-link ul,
+.social-link ul {
+    margin: 0;
+    padding: 0;
+
+}
+
+.alert {
+    padding: 12px 16px;
+    color: #f9f9f9;
+    font-size: 16px;
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    font-weight: bold;
+}
+
+.alert-danger {
+    background-color: #ff0000;
+}
+
+.landing-page-content {
+    padding: 44px 40px;
+}
+
+.landing-page-content a {
+    margin-top: 2px;
+    border: 1px solid #618863;
+    border-radius: 4px;
+    padding: 16px 32px;
+    background-color: #dad270;
+    color: #f2f2f2;
+}
+
+.landing-page-content a:hover {
+    background-color: #b4a910;
+}
+
+.landing-page-content .sentence {
+    padding-bottom: 22px;
+    font-size: large;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+}
+
+/* Style all font awesome icons */
+
+.social-link .fa {
+    padding: 10px;
+    font-size: 20px;
+    width: 40px;
+    text-align: center;
+    float: left;
+    margin-right: 6px;
+    border: 1px solid #8e9d5b;
+}
+
+.social-link .fa:hover {
+    opacity: 0.7;
+}
+
+.social-link .fa-facebook {
+    background: #3B5998;
+    color: white;
+}
+
+.social-link .fa-twitter {
+    background: #55ACEE;
+    color: white;
+}
+
+.social-link .fa-instagram {
+    background: #55ACEE;
+    color: white;
+}
+
+
+.patients-list, 
+.physicians-list{
+    background-color: #ffffff;
+    padding: 12px;
+    width: 100%;
+    border: 1px dotted black;
+    overflow: auto;
+}
+
+.patients-list{
+    height: 200px;
+}
+
+.physicians-list{
+    height: 200px;
+}
+
+.patient-record-list{
+    border: 1px solid #ff5555;
+    margin: 2px 0;
+}

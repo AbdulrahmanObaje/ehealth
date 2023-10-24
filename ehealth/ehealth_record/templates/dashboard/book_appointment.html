@@ -1,0 +1,98 @@
+{% extends "db_master.html" %}
+{% comment %} /* ------------------------------------------------------------------------------------
+ *  COPYRIGHT AND TRADEMARK NOTICE
+ *  Copyright 2001-2019 Abdulrahman Obaje. All Rights Reserved.
+ *  Galleria.com.ng is a trademark of eHealth4Everyone.
+
+ *  COPYRIGHT NOTICES AND ALL THE COMMENTS SHOULD REMAIN INTACT.
+ *  By using this code you agree to indemnify Abdulrahman Obaje from any
+ *  liability that might arise from it's use.
+  ------------------------------------------------------------------------------------ */ {% endcomment %}
+
+{% load static %}
+
+{% block title %}
+  Book appointment
+{% endblock %}
+
+{% block master-content %}
+
+<div class="col-s-8">
+  <div class="row">
+    <h4>Book <strong>appointment with Health Worker</strong></h4>
+    <form action="{% url 'dopostappointment' %}" class="ehealth-form" method="POST">
+    {% csrf_token %}
+    <div class="row">
+      <span>Search by First Name</span><br>
+      <div class="col-s-6">
+        <input class="" id="seach_box" name="seach_box" type="text">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-s-12">
+        <span>Select Prefered Physician</span><br>
+        <div id="physician_container" class="physicians-list">
+          {% for physician in physicians %}
+              <label class="input-container">{{ physician.first_name }} {{ physician.last_name }}
+                <input type="checkbox" name="physician[]" id="physician" value="{{ physician.id }}">
+                <span class="checkmark"></span>
+              </label>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-s-12">
+          <label for="ex1">Prefered Appointment Date</label>
+          <input class="" id="sub_start_date" name="sub_start_date" type="date">
+        </div>
+      </div>
+
+      <div class="row">
+        <label for="ex1">Description</label>
+        <textarea class="" id="description" name="description" rows="4" data-rule="required" data-msg="Please write something" placeholder="Description"></textarea>
+        <p class="text-center">
+          <button class="" type="submit">Book Appointment</button>
+        </p>
+      </div>
+    </div>
+      </form>
+    </div>
+
+<script>
+  document.getElementById("seach_box").addEventListener("keydown", function(){
+
+  $.ajax({
+    type: 'GET',
+    url: "get_physician_by_name",
+    data: {
+      p: $("#seach_box").val(),
+    },
+    dataType: 'json',
+    success:function(response){    
+      //alert("Successful: " + response.physician[0]["first_name"]); 
+      var hold = document.getElementById("physician_container");
+      hold.innerHTML = "";
+      for (let i = 0; i <= response.physician.length; i++) {         
+        // creates a <table> element and a <tbody> element
+        
+        var checkbox = document.createElement('input');
+        checkbox.type = "checkbox";
+        checkbox.name = "physician[]";
+        checkbox.id = "cbid";
+        checkbox.value = response.physician[i]["id"];
+        var label = document.createElement('label');
+        var tn = document.createTextNode(response.physician[i]["first_name"] +" "+ response.physician[i]["last_name"]);
+        label.class ="input-container"
+        hold.appendChild(label);
+        label.htmlFor="cbid";
+        label.appendChild(tn); 
+        
+        hold.appendChild(checkbox);
+      }
+      $('#table_record').html(tbl);
+    },
+  });
+});
+</script>
+
+{% endblock %}

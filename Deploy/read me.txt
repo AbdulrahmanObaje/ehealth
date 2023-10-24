@@ -1,0 +1,1 @@
+After migration run the script on your mysql server to install records for states and ailment. Time too short to write seed scripts. Please forgive me.

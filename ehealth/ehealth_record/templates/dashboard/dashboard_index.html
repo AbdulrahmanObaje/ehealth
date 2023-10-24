@@ -1,0 +1,30 @@
+{% extends "db_master.html" %}
+{% comment %} /* ------------------------------------------------------------------------------------
+ *  COPYRIGHT AND TRADEMARK NOTICE
+ *  Copyright 2001-2019 Abdulrahman Obaje. All Rights Reserved.
+ *  Galleria.com.ng is a trademark of ObajeSoft Inc.
+
+ *  COPYRIGHT NOTICES AND ALL THE COMMENTS SHOULD REMAIN INTACT.
+ *  By using this code you agree to indemnify Abdulrahman Obaje from any
+ *  liability that might arise from it's use.
+  ------------------------------------------------------------------------------------ */ {% endcomment %}
+
+{% load static %}
+
+{% block title %}
+  | View Patients
+{% endblock %}
+
+{% block master-content %}
+    <div class="row">
+        <h5>Welcome<strong>Dashboard</strong></h5>
+        <p>Welcome to your dashboard. You view statistical record of ailments as it affect patients across board. </p>
+        <p>If you are a normal user you can <a href="{% url 'post_record' %}"><i class="fa fa-plus"></i>  add a record</a> a record of ailment that is currently affecting your health in order to help health officials get statistics of the health issue.</p>
+        <p>Also feel free to  <a href="{% url 'view_statistics' %}"><i class="fa fa-plus"></i>  view the statistics</a> for your information.</p>
+        
+    </div>
+    <div>
+      
+    </div>
+
+{% endblock %}

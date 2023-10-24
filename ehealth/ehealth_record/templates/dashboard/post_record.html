@@ -1,0 +1,96 @@
+{% extends "db_master.html" %}
+{% comment %} /* ------------------------------------------------------------------------------------
+ *  COPYRIGHT AND TRADEMARK NOTICE
+ *  Copyright 2001-2019 Abdulrahman Obaje. All Rights Reserved.
+ *  Galleria.com.ng is a trademark of eHealth4Everyone.
+
+ *  COPYRIGHT NOTICES AND ALL THE COMMENTS SHOULD REMAIN INTACT.
+ *  By using this code you agree to indemnify Abdulrahman Obaje from any
+ *  liability that might arise from it's use.
+  ------------------------------------------------------------------------------------ */ {% endcomment %}
+
+{% load static %}
+
+{% block title %}
+  View Ailments Statistics
+{% endblock %}
+
+{% block master-content %}
+<section id="" class="ehealth-form">
+  <div class="row">
+    <div class="col-s-10">
+      <h4>Add  <strong> a medical record</strong></h4>
+      <form action="{% url 'dopostrecord' %}" class="recordForm" method="POST">
+      {% csrf_token %}
+
+      <div class="row">
+        <div class="col-s-12">
+          <p>What type of ailment are you suffering from? .Please select from the drop down below,</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-s-6">
+          <select class="" id="ailment" name="ailment" required>
+            <option value="">Select Ailment</option>
+            {% for ailment in ailments %}
+                <option value="{{ ailment.id }}">{{ ailment.name }} </option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-s-6">
+          <span>State Residing</span>
+          <select class="" id="state" name="state" required>
+            <option value="">Select State</option>
+            {% for state in states %}
+                <option value="{{ state.id }}">{{ state.name }} </option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-s-12">
+          <span>Description</span>
+          <textarea class="" id="diagnosis" name="diagnosis" rows="4" data-rule="required" data-msg="Please write something" placeholder="Description"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-s-12">
+          <p class="text-center">
+            <button class="" type="submit">Add Patient Record</button>
+          </p>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+<script>
+    document.getElementById("sub_user").addEventListener("change", function(){
+      document.getElementById("sub_website").innerHTML = "";
+      $.ajax({
+        type: 'GET',
+        url: "get_user_websites/",
+        data: {
+          subscriber: $("#sub_user").val(),
+        },
+        dataType: 'json',
+        success:function(response){               
+          var select = document.getElementById("sub_website");
+          var option = document.createElement("option");
+          option.value = ""
+          option.innerHTML = "Select Related Website"
+          select.appendChild(option);
+          for(var i=0; i < response.websites.length; i++)
+          {
+            
+            
+            option.value = response.websites[i]["id"]
+            option.innerHTML = response.websites[i]["domain_name"]
+            select.appendChild(option);
+          }
+        },
+      });
+    });
+    </script>
+{% endblock %}

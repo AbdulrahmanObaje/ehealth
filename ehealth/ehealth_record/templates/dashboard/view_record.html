@@ -1,0 +1,100 @@
+{% extends "db_master.html" %}
+{% comment %} /* ------------------------------------------------------------------------------------
+ *  COPYRIGHT AND TRADEMARK NOTICE
+ *  Copyright 2001-2019 Abdulrahman Obaje. All Rights Reserved.
+ *  Galleria.com.ng is a trademark of ObajeSoft Inc.
+
+ *  COPYRIGHT NOTICES AND ALL THE COMMENTS SHOULD REMAIN INTACT.
+ *  By using this code you agree to indemnify Abdulrahman Obaje from any
+ *  liability that might arise from it's use.
+  ------------------------------------------------------------------------------------ */ {% endcomment %}
+
+{% load static %}
+
+{% block title %}
+  | View Patients
+{% endblock %}
+
+{% block master-content %}
+<div class="col-s-8">
+    <div class="row">
+      <h5>View<strong>Existing Patients Record</strong></h5>
+      <label>Filter Patients By Ailment</label>
+      <select class="" id="ailment" name="ailment" required>
+        <option value="">Select Ailment</option>
+        {% for ailment in ailments %}
+            <option value="{{ ailment.id }}">{{ ailment.name }} </option>
+        {% endfor %}
+      </select>    
+      <label>Records</label>
+      <select class="" id="record" name="record" required>
+          <option value="">Select Patient</option>
+          {% for record in records %}
+              <option value="{{ record.id }}">{{ record.diagnosis }} </option>
+          {% endfor %}
+      </select>    
+      <div id="table_record">
+
+        
+      </div>
+    </div>
+</div>
+
+    <script>
+        document.getElementById("patient").addEventListener("change", function(){
+        var tbcont = document.getElementById("table_record");
+
+        $.ajax({
+          type: 'GET',
+          url: "get_user_appointment",
+          data: {
+            p: $("#patient").val(),
+          },
+          dataType: 'json',
+          success:function(response){    
+            alert(response.appointments[0]["status"]);           
+            // creates a <table> element and a <tbody> element
+            const tbl = document.createElement("table");
+            const tblBody = document.createElement("tbody");
+
+            // creating all cells
+            for (let i = 0; i < response.appointments.length; i++) {
+              // creates a table row
+              const row = document.createElement("tr");
+
+
+              let cellid = document.createElement("td");
+              let cellstatus = document.createElement("td");
+              cellid.appendChild(document.createTextNode(response.appointments[i]["id"]));
+              row.appendChild(cellid);
+              cellstatus.appendChild(document.createTextNode(response.appointments[i]["status"]));
+              row.appendChild(cellstatus);
+              tblBody.appendChild(row);
+              //for (let j = 0; j < 2; j++) {
+                // Create a <td> element and a text node, make the text
+                // node the contents of the <td>, and put the <td> at
+                // the end of the table row
+                //const cell = document.createElement("td");
+                //const cellText = document.createTextNode(`cell in row ${i}, column ${j}`);
+                //const cellText = document.createTextNode(response.appointments[i]["status"]);
+                //cell.appendChild(cellText);
+                //row.appendChild(cell);
+              //}
+
+                // add the row to the end of the table body
+                tblBody.appendChild(row);
+              }
+
+              // put the <tbody> in the <table>
+              tbl.appendChild(tblBody);
+              // appends <table> into <body>
+              //document.body.appendChild(tbl);
+              //tbcont.appendChild(tbl);
+              $('#table_record').html(tbl);
+              // sets the border attribute of tbl to '2'
+              tbl.setAttribute("border", "2");
+          },
+        });
+      });
+      </script>
+{% endblock %}

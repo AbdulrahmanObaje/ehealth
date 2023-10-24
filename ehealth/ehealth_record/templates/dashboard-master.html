@@ -1,0 +1,26 @@
+{% extends 'master.html' %} 
+
+{% block content %}
+<div class="container dashboard">
+  <div class="row">
+    <div class="span3">
+      <ul>
+        <li><a href="{% url 'post_appointment' %}">Book Medical Appointment</a></li>
+      </ul>
+        {%  if user.role == "Health Worker" %}
+            <ul>
+                <li><a href="{% url 'post_record' %}">Post Record</a></li>
+                <li><a href="{% url 'view_patient' %}">View Patients</a></li>
+                <li><a href="{% url 'view_statistics' %}">Statistics</a></li>
+            </ul>
+        {% endif %}
+    </div>
+    <div class="span9">
+      <div class="container">
+        <h5>{% block master-content-header %} {% endblock %}</h5>
+        {% block master-content %} {% endblock %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
